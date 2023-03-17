@@ -13,9 +13,6 @@ const dataPenjualanNovel = [
     getModal: function () {
       return this.hargaBeli * (this.sisaStok + this.totalTerjual);
     },
-    getNamaProduk: function () {
-      return this.namaProduk;
-    },
     getTotal: function () {
       return this.totalTerjual;
     },
@@ -33,9 +30,6 @@ const dataPenjualanNovel = [
     },
     getModal: function () {
       return this.hargaBeli * (this.sisaStok + this.totalTerjual);
-    },
-    getNamaProduk: function () {
-      return this.namaProduk;
     },
     getTotal: function () {
       return this.totalTerjual;
@@ -55,9 +49,6 @@ const dataPenjualanNovel = [
     getModal: function () {
       return this.hargaBeli * (this.sisaStok + this.totalTerjual);
     },
-    getNamaProduk: function () {
-      return this.namaProduk;
-    },
     getTotal: function () {
       return this.totalTerjual;
     },
@@ -75,9 +66,6 @@ const dataPenjualanNovel = [
     },
     getModal: function () {
       return this.hargaBeli * (this.sisaStok + this.totalTerjual);
-    },
-    getNamaProduk: function () {
-      return this.namaProduk;
     },
     getTotal: function () {
       return this.totalTerjual;
