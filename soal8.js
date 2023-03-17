@@ -110,7 +110,7 @@ function getInfoDataPenjualan(dataPenjualanNovel) {
     return resultProfit;
   });
 
-  const persentase = (sumProfit / sumModal) * 100;
+  const persentase = (resultProfit / sumModal) * 100;
 
   dataPenjualanNovel?.map((list_toBestSeller) => {
     arrayTotal.push(list_toBestSeller.getTotal());
@@ -125,7 +125,7 @@ function getInfoDataPenjualan(dataPenjualanNovel) {
   console.log(`Best Seller : ` + max + ` terjual`);
   console.log(`Total Keuntungan = ` + resultProfit);
   console.log(`Total Modal = ` + sumModal);
-  console.log(`Persentase Keuntungan = ` + persentase + `%`);
+  console.log(`Persentase Keuntungan = ` + Math.trunc(persentase) + `%`);
 }
 
 getInfoDataPenjualan(dataPenjualanNovel);
