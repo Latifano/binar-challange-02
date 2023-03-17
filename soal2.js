@@ -1,4 +1,4 @@
-exports.checkTypeNumber = (givenNumber) => {
+checkTypeNumber = (givenNumber) => {
   givenNumber = parseInt(givenNumber);
   if (givenNumber % 2 === 0) {
     return `Bilangan ` + givenNumber + ` adalah GENAP`;
@@ -8,6 +8,7 @@ exports.checkTypeNumber = (givenNumber) => {
     return `Error : Invalid data type`;
   }
 };
+
 /* String "" masih membaca sbg integer
  */
 
@@ -19,3 +20,5 @@ exports.checkTypeNumber = (givenNumber) => {
 // console.log(checkTypeNumber({}));
 // console.log(checkTypeNumber([]));
 // console.log(checkTypeNumber());
+
+exports.checkTypeNumber = this.checkTypeNumber;
