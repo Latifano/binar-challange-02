@@ -83,37 +83,57 @@ penulisTerlaris = totalTerjual terbanyak (ditampilkan namaPenulis)
 
 function getInfoDataPenjualan(dataPenjualanNovel) {
   let sumProfit = 0;
-  let sumModal = 0;
-  let resultProfit = 0;
-  let arrayTotal = [];
+  let totalModal = 0;
+  let totalKeuntungan = 0;
+  // let arrayTotal = [];
 
   dataPenjualanNovel?.map((list_toModal) => {
-    sumModal += list_toModal.getModal();
-    return sumModal;
+    totalModal += list_toModal.getModal();
+    return totalModal;
   });
 
   dataPenjualanNovel?.map((list_toProfit) => {
     sumProfit += list_toProfit.getProfit();
-    resultProfit = sumProfit - sumModal;
-    return resultProfit;
+    totalKeuntungan = sumProfit - totalModal;
+    return totalKeuntungan;
   });
 
-  const persentase = (resultProfit / sumModal) * 100;
+  const persentase = (totalKeuntungan / totalModal) * 100;
 
-  dataPenjualanNovel?.map((list_toBestSeller) => {
-    arrayTotal.push(list_toBestSeller.getTotal());
-  });
+  // dataPenjualanNovel?.map((list_toBestSeller) => {
+  //   arrayTotal.push(list_toBestSeller.getTotal());
+  // });
 
-  let max = -Infinity;
-  for (let number of arrayTotal) {
-    if (number > max) {
-      max = number;
+  // let max = -Infinity;
+  // for (let number of arrayTotal) {
+  //   if (number > max) {
+  //     max = number;
+  //   }
+  // }
+
+  let maxTerjual = 0;
+  let produkBukuTerlaris = null;
+  let penulisTerlaris = null;
+
+  dataPenjualanNovel.forEach((produk) => {
+    if (produk.totalTerjual > maxTerjual) {
+      maxTerjual = produk.totalTerjual;
+      produkBukuTerlaris = produk.namaProduk;
+      penulisTerlaris = produk.penulis;
+      return produkBukuTerlaris, penulisTerlaris;
     }
-  }
-  console.log(`Best Seller : ` + max + ` terjual`);
-  console.log(`Total Keuntungan = ` + resultProfit);
-  console.log(`Total Modal = ` + sumModal);
-  console.log(`Persentase Keuntungan = ` + Math.trunc(persentase) + `%`);
+  });
+
+  const objInfoPenjualan = {};
+  objInfoPenjualan.totalKeuntungan = totalKeuntungan;
+  objInfoPenjualan.totalModal = totalModal;
+  objInfoPenjualan.persentase = Math.trunc(persentase) + "%";
+  objInfoPenjualan.produkBukuTerlaris = produkBukuTerlaris;
+  objInfoPenjualan.penulisTerlaris = penulisTerlaris;
+
+  return objInfoPenjualan;
+
+  // console.log(`Best Seller : ` + max + ` terjual`);
 }
 
-getInfoDataPenjualan(dataPenjualanNovel);
+console.log(getInfoDataPenjualan(dataPenjualanNovel));
