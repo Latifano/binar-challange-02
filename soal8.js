@@ -96,16 +96,18 @@ penulisTerlaris = totalTerjual terbanyak (ditampilkan namaPenulis)
 function getInfoDataPenjualan(dataPenjualanNovel) {
   let sumProfit = 0;
   let sumModal = 0;
+  let resultProfit = 0;
   let arrayTotal = [];
-
-  dataPenjualanNovel?.map((list_toProfit) => {
-    sumProfit += list_toProfit.getProfit();
-    return sumProfit;
-  });
 
   dataPenjualanNovel?.map((list_toModal) => {
     sumModal += list_toModal.getModal();
     return sumModal;
+  });
+
+  dataPenjualanNovel?.map((list_toProfit) => {
+    sumProfit += list_toProfit.getProfit();
+    resultProfit = sumProfit - sumModal;
+    return resultProfit;
   });
 
   const persentase = (sumProfit / sumModal) * 100;
@@ -121,7 +123,7 @@ function getInfoDataPenjualan(dataPenjualanNovel) {
     }
   }
   console.log(`Best Seller : ` + max + ` terjual`);
-  console.log(`Total Keuntungan = ` + sumProfit);
+  console.log(`Total Keuntungan = ` + resultProfit);
   console.log(`Total Modal = ` + sumModal);
   console.log(`Persentase Keuntungan = ` + persentase + `%`);
 }
